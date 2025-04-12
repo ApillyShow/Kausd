@@ -12,7 +12,7 @@ public class EnemyEntity : MonoBehaviour {
     private PolygonCollider2D _polygonCollider2D;
     private BoxCollider2D _boxCollider2D;
     private EnemyAI _enemyAI;
-    private int _currentHealth;
+    private float _currentHealth;
 
 
     private void Awake() {
@@ -33,7 +33,7 @@ public class EnemyEntity : MonoBehaviour {
         _polygonCollider2D.enabled = true;
     }
 
-    public void TakeDamage(int damage) {
+    public void TakeDamage(float damage) {
         _currentHealth -= damage;
         OnTakeHit?.Invoke(this, EventArgs.Empty);
 
@@ -56,5 +56,4 @@ public class EnemyEntity : MonoBehaviour {
             Destroy(gameObject, 2f);
         }
     }
-
 }

@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour {
     private Vector2 _movement;
     private Vector2 _playerInput;
 
+    public int _currentLevel;
     private int _expValue;
-    private int _currentLevel;
     private bool _isAlive;
     private bool _canTakeDamage;
     private readonly float minMoveingSpeed;
@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour {
         MovementControll();
         CurrentLevel();
         CrurrentHP();
+        if(_isAlive) {
+            Regeneration();
+        }
     }
 
     public bool IsRunning() => _isRunning; // Публичный метод. Работает как return _isRunning
@@ -100,6 +103,10 @@ public class PlayerController : MonoBehaviour {
             _healthSystem.AddValueMax(1.02f);
             _currentLevel = _expSystem._level;
         }
+    }
+
+    private void Regeneration() {
+        _healthSystem.AddValue(0.3f * Time.deltaTime);
     }
     private void DetectDeath() {
         if (_healthSystem._value == 0 && _isAlive) {
