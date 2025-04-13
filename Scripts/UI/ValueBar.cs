@@ -6,6 +6,6 @@ public class ValueBar : MonoBehaviour {
     [SerializeField] private Image _lineBar;
 
     public void SetValue(float fillAmount) {
-        _lineBar.fillAmount = fillAmount;
+        _lineBar.fillAmount = fillAmount;   // доделать
     }
 }
