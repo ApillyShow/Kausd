@@ -6,7 +6,7 @@ public class Timer : MonoBehaviour {
     [SerializeField] private int delta = 0;
     public event EventHandler OnBossTime;
     private TMP_Text _timerText;
-    private int sec = 0;
+    public int sec = 0;
     private int min = 0;
 
     private void Awake() {
