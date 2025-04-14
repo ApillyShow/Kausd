@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 public class SwordController : MonoBehaviour {
-    
+
     [SerializeField] private float _damageAmount = 5;
     private int _Level;
     private void Awake() {

@@ -36,10 +36,16 @@ public class PlayerAttack : MonoBehaviour {
             _Level = PlayerController.Instance._currentLevel;
         }
     }
-    public void Attack() {
+    public void Attack(GameObject hitObject) {
         IsAttacking = true;
-        if (_cooldown <= 0) {
+        if (hitObject.TryGetComponent<TrailRenderer>(out var trail)) {
             _animator.SetTrigger(ATTACK);
+            Vector3 originalPosition = hitObject.transform.position;
+            Vector3 newPosition = originalPosition + hitObject.transform.forward * 2f;
+                
+            trail.Clear();
+            hitObject.transform.position = newPosition;
+            trail.AddPosition(newPosition);
             _cooldown = _attackSpeed;
         }
     }
