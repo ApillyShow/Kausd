@@ -21,8 +21,7 @@ public class ValueSystem {
     }
     
     public void AddValueMax(float value) {
-       _valueMax *= value;
-       _valueMax = MathF.Round(_valueMax, 2);
+       _valueMax += value;
         SayChanged();
     }
     public void RemoveValue(float value) {

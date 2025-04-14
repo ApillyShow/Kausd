@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour {
     private Vector2 _movement;
     private Vector2 _playerInput;
 
-    private int _sec;
     public int _currentLevel;
     private int _expValue;
     private bool _isAlive;
@@ -35,11 +34,11 @@ public class PlayerController : MonoBehaviour {
 
     private void Start() {
         GameInput.Instance.OnPlayerAttack += GameInput_OnPlayerAttack;
-        _canTakeDamage = true;
         _isAlive = true;
         _healthSystem.Setup(100);
+        StartCoroutine(BaseRegeneration());
         _expSystem._level = _currentLevel;
-        _sec = _timer.sec;
+        _canTakeDamage = true;
     }
     private void Update() {
         _playerInput = GameInput.Instance.GetMovementVector();
@@ -49,12 +48,6 @@ public class PlayerController : MonoBehaviour {
         MovementControll();
         CurrentLevel();
         CrurrentHP();
-        if (_timer.sec != _sec) {
-            BaseRegeneration();
-        }
-        if(_isAlive) {
-            Regeneration();
-        }
     }
 
     public bool IsRunning() => _isRunning; // Публичный метод. Работает как return _isRunning
@@ -74,6 +67,19 @@ public class PlayerController : MonoBehaviour {
         DetectDeath();
     }
 
+    private IEnumerator DamageRecoveryRoutime() {
+        yield return new WaitForSeconds(_damageRecoveryTime);
+        _canTakeDamage = true;
+    }
+    private IEnumerator BaseRegeneration() {
+        while (true) {
+            _healthSystem.AddValue(0.5f);
+            yield return new WaitForSeconds(2);
+            if (IsAlive() == false) {
+                yield break;
+            }
+        }
+    } 
     private void MovementControll() {
         _movement = _playerInput * _speed;
         _rb2D.MovePosition(_rb2D.position + _movement * Time.deltaTime);
@@ -83,10 +89,6 @@ public class PlayerController : MonoBehaviour {
         } else {
             _isRunning = false;
         }
-    }
-    private IEnumerator DamageRecoveryRoutime() {
-        yield return new WaitForSeconds(_damageRecoveryTime);
-        _canTakeDamage = true;
     }
     private void GameInput_OnPlayerAttack(object sender, EventArgs e) {  // событие связанное с GameInput
         PlayerAttack.Instacne.Attack();
@@ -104,20 +106,13 @@ public class PlayerController : MonoBehaviour {
         HP.text = _healthSystem._value.ToString() + " / " + _healthSystem._valueMax.ToString();
     }
     
-    private void BaseRegeneration() {
-        _healthSystem.AddValue(0.3f);
-    } 
     
     private void CurrentLevel() {
         Level.text = _expSystem._level.ToString();
         if (_expSystem._level != _currentLevel) {
-            _healthSystem.AddValueMax(1.02f);
+            _healthSystem.AddValueMax(2.5f);
             _currentLevel = _expSystem._level;
         }
-    }
-
-    private void Regeneration() {
-        _healthSystem.AddValue(0.3f * Time.deltaTime);
     }
     private void DetectDeath() {
         if (_healthSystem._value == 0 && _isAlive) {

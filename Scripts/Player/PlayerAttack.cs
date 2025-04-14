@@ -31,7 +31,7 @@ public class PlayerAttack : MonoBehaviour {
 
     public void LevelingUp() {
         if (PlayerController.Instance._currentLevel != _Level) {
-            _attackSpeed /= 1.05f;
+            _attackSpeed /= 1.08f;
             MathF.Round(_attackSpeed, 2);
             _Level = PlayerController.Instance._currentLevel;
         }
