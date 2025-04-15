@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(EnemyAI))]
 public class EnemyEntity : MonoBehaviour {
+    public static EnemyEntity Instance {get; private set;}
     [SerializeField] private EnemySO _enemySO;
     [SerializeField] private GameObject _expPrefab;
     public event EventHandler OnTakeHit;
@@ -16,6 +17,7 @@ public class EnemyEntity : MonoBehaviour {
 
 
     private void Awake() {
+        Instance = this;
         _polygonCollider2D = GetComponent<PolygonCollider2D>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
         _enemyAI = GetComponent<EnemyAI>();
@@ -46,13 +48,12 @@ public class EnemyEntity : MonoBehaviour {
     }
     private void DetectDeath() {
         if (_currentHealth <= 0) {
-            _boxCollider2D.enabled = false;
-            _polygonCollider2D.enabled = false;
+            //_boxCollider2D.enabled = false;
+            //polygonCollider2D.enabled = false;
             _enemyAI.SetDeathState();
-
             OnDeath?.Invoke(this, EventArgs.Empty);
             Instantiate(_expPrefab, transform.position, Quaternion.identity);
-            
+
             Destroy(gameObject, 2f);
         }
     }

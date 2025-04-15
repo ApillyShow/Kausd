@@ -20,13 +20,17 @@ public class PlayerController : MonoBehaviour {
     private Vector2 _movement;
     private Vector2 _playerInput;
 
+    public bool IsRunning() => _isRunning; // Публичный метод. Работает как return _isRunning
+    public bool IsAlive() => _isAlive;
     public int _currentLevel;
+
     private int _expValue;
     private bool _isAlive;
     private bool _canTakeDamage;
     private readonly float minMoveingSpeed;
     private bool _isRunning;
     
+
     private void Awake() {
         Instance = this;
         _rb2D = GetComponent<Rigidbody2D>();
@@ -50,9 +54,13 @@ public class PlayerController : MonoBehaviour {
         CrurrentHP();
     }
 
-    public bool IsRunning() => _isRunning; // Публичный метод. Работает как return _isRunning
-    public bool IsAlive() => _isAlive;
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Exp")) {
 
+            _expValue = UnityEngine.Random.Range(1,3);
+            _expSystem.AddExpValue(_expValue);
+        }
+    }
     public Vector3 GetPlayerScreenPosition() {
         Vector3 playerScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
         return playerScreenPosition;
@@ -91,15 +99,8 @@ public class PlayerController : MonoBehaviour {
         }
     }
     private void GameInput_OnPlayerAttack(object sender, EventArgs e) {  // событие связанное с GameInput
-        PlayerAttack.Instacne.Attack();
+        SwordController.Instacne.Attack();
         //ActiveWeapon.Instacne.GetActiveWeapon().Attack();
-    }
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Exp")) {
-
-            _expValue = UnityEngine.Random.Range(1,3);
-            _expSystem.AddExpValue(_expValue);
-        }
     }
     
     private void CrurrentHP() {

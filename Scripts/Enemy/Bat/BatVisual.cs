@@ -35,11 +35,6 @@ public class BatVisual : MonoBehaviour {
     public void TriggerAttackAnimationTurnOn() {
         _enemyEntity.PoligonColliderTurnOn();
     }
-    private void OnDestroy() {
-        _enemyAI.OnEnemyAttack -= EnemyAI_OnEnemyAttack;
-        _enemyEntity.OnTakeHit -= EnemyEntity_OnTakeHit;
-        _enemyEntity.OnDeath -= EnemyEntity_OnDeath;
-    } 
     private void EnemyAI_OnEnemyAttack(object sender, EventArgs e) {
         _animator.SetTrigger(ATTACK);
     }
@@ -51,5 +46,10 @@ public class BatVisual : MonoBehaviour {
         _animator.SetBool(IS_DIE, true);
         _spriteRenderer.sortingOrder = -1;
         _shadow.SetActive(false);
+    } 
+    private void OnDestroy() {
+        _enemyAI.OnEnemyAttack -= EnemyAI_OnEnemyAttack;
+        _enemyEntity.OnTakeHit -= EnemyEntity_OnTakeHit;
+        _enemyEntity.OnDeath -= EnemyEntity_OnDeath;
     } 
 }
