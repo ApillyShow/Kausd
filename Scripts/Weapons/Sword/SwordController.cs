@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SwordController : MonoBehaviour {
@@ -6,9 +7,10 @@ public class SwordController : MonoBehaviour {
     private const string ATTACK = "Attack";
     public float _cooldown;
     public bool IsAttacking() => _isAttacking;
-    
+
     private bool _isAttacking = false;
     private float _attackSpeed = 1f;
+    private float _damage = 5f;
 
     // private int _Level;
     private void Awake() {
@@ -28,10 +30,8 @@ public class SwordController : MonoBehaviour {
     //     }
     // }
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.transform.TryGetComponent(out EnemyEntity _)) {
-            Attack baseAttack = new BaseAttack() {Damage = 5f};
-
-            baseAttack.Execute();
+        if (collision.transform.TryGetComponent(out EnemyEntity enemyEntity)) {
+            enemyEntity.TakeDamage(_damage);
         }
     }
     public void Attack() {
@@ -46,6 +46,12 @@ public class SwordController : MonoBehaviour {
         if (_cooldown <= 0) {
             _cooldown = 0;
             _isAttacking = false;
+        }
+    }
+    
+    public SwordController GetActiveAugmentation() {
+        if (baseAttack) {
+            return baseAttack;
         }
     }
 }
