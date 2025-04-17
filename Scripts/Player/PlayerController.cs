@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 [SelectionBase] // При нажатии выбирать героя самого
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI Level;
     [SerializeField] private TextMeshProUGUI HP;
     [SerializeField] private Timer _timer;
+    [SerializeField] private GameObject _AugmentationsMenu;
     [SerializeField] private float _damageRecoveryTime = 1.5f;    
     [SerializeField] private float _speed = 1f;
     

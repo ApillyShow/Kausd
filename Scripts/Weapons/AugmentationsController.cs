@@ -1,16 +1,10 @@
 using UnityEngine;
-using static Augmentations;
-
 public class AugmentationsController : MonoBehaviour {
-//     [SerializeField] private GameObject _PiercingHitPrefab;
-//     [SerializeField] private Transform _player;
-// //    private int spawnDistance = 2;
-    [SerializeField] private SwordController _baseAttack;
-    
-    readonly Augmentation piercingHit = new BaseAttack();
-    readonly Augmentation baseAttack = new BaseAttack();
+    [SerializeField] private GameObject piercingHit;
 
-    public SwordController BaseAttack() {
-        return _baseAttack;
+    public void PiercingSwordHit() {
+        if (piercingHit.activeInHierarchy == false) {
+            piercingHit.SetActive(true);
+        }
     }
 }

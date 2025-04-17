@@ -1,2 +1,12 @@
 fileFormatVersion: 2
 guid: 12c5ae1056bc93a4a9a4a13fe8072ccd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - piercingHit: {fileID: 3435183729820157799, guid: c60f2969da9eb494e915e5839ab05e7b, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
