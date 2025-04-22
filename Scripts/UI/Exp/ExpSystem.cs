@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,6 +21,7 @@ public class ExpSystem {
             _expValue = 0;
             LvlUp();
             _expValueMax = 40 * _level;
+            
         }
         SayChanged();
     }
