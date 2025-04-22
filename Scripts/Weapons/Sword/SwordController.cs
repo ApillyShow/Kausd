@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class SwordController : MonoBehaviour {
     public static SwordController Instacne { get; private set;}
+    [SerializeField] private GameObject _piercingHitController;
     [SerializeField] private Animator _animator;
-    [SerializeField] private GameObject PiercingHitVisual;
+
     private const string ATTACK = "Attack";
     public float _cooldown;
     public bool IsAttacking() => _isAttacking;
@@ -37,20 +38,19 @@ public class SwordController : MonoBehaviour {
     }
     public void Attack() {
         _isAttacking = true;
-        if (PiercingHitVisual != null) {
-            _isAttacking = true;
-            _animator.SetTrigger(ATTACK);
-        }
         if (_cooldown <= 0) {
             _animator.SetTrigger(ATTACK);
             _cooldown = _attackSpeed;
+            if (_piercingHitController.activeInHierarchy == true) {
+                PiercingHitController.Instance.Attack();
+            }
+            _isAttacking = false;
         }
     }
     private void CooldownSystem() {
         _cooldown -= Time.deltaTime;
         if (_cooldown <= 0) {
             _cooldown = 0;
-            _isAttacking = false;
         }
     }
 }

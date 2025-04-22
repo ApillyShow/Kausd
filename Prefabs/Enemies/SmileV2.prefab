@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5276113071268561007}
   - component: {fileID: 4047127451577467933}
   - component: {fileID: 1809189640084205161}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SmileV2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 1386790219232137735}
   - component: {fileID: 5871248138005415318}
   - component: {fileID: 7857643795521866221}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SlimeVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,8 +264,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -585218671
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -236514112, guid: b9b36dcc797230142ae47cf262f6d9c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

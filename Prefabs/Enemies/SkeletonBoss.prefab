@@ -72,6 +72,22 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4415434472380290135, guid: 2bbbd590be9e04a4482019c40f0a11a9, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415434472380290135, guid: 2bbbd590be9e04a4482019c40f0a11a9, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -585218671
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765839309604740476, guid: 2bbbd590be9e04a4482019c40f0a11a9, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765839309604740476, guid: 2bbbd590be9e04a4482019c40f0a11a9, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -585218671
+      objectReference: {fileID: 0}
     - target: {fileID: 4797553304060055750, guid: 2bbbd590be9e04a4482019c40f0a11a9, type: 3}
       propertyPath: _enemySO
       value: 

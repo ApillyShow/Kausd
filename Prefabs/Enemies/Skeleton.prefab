@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4415434472380290135}
   - component: {fileID: 3729458424248689859}
   - component: {fileID: 901583413220966775}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SkeletonVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -585218671
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 779008683, guid: 4d7f2849be38ced4e94c6c734fe46f57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 668898123197668905}
   - component: {fileID: 8725400608150667120}
   - component: {fileID: 4797553304060055750}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 758824723646845307}
   - component: {fileID: 4765839309604740476}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SkeletonShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,8 +397,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -585218671
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 196451686, guid: 8d1326af98920a64897006362d0823ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
